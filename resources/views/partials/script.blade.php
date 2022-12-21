@@ -11,9 +11,9 @@
 <!-- Chart js -->
 <script type="text/javascript" src="{{ asset('assets') }}/bower_components/chart.js/js/Chart.js"></script>
 <!-- amchart js -->
-<script src="{{ asset('assets') }}/pages/widget/amchart/amcharts.js"></script>
+{{-- <script src="{{ asset('assets') }}/pages/widget/amchart/amcharts.js"></script>
 <script src="{{ asset('assets') }}/pages/widget/amchart/serial.js"></script>
-<script src="{{ asset('assets') }}/pages/widget/amchart/light.js"></script>
+<script src="{{ asset('assets') }}/pages/widget/amchart/light.js"></script> --}}
 <script src="{{ asset('assets') }}/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="{{ asset('assets') }}/js/SmoothScroll.js"></script>
 <script src="{{ asset('assets') }}/js/pcoded.min.js"></script>

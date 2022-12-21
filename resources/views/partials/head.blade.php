@@ -29,5 +29,8 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/jquery.mCustomScrollbar.css">
+<!-- ico font -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/icon/icofont/css/icofont.css">
+@yield('custom-css')
 
 </head>

@@ -9,9 +9,9 @@
                 </a>
             </li>
             <li class="">
-                <a href="{{ route('topic') }}">
+                <a href="{{ route('admin.blogs.index') }}">
                     <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
-                    <span class="pcoded-mtext">Topics</span>
+                    <span class="pcoded-mtext">Tutorials</span>
                 </a>
             </li>
         </ul>

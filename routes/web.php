@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,9 @@ Route::get('/', function () {
     return view('pages.dashboard');
 });
 
-Route::get('/topics', function () {
-    return view('pages.topic');
-})->name('topic');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resources([
+        'blogs' => App\Http\Controllers\Admin\BlogController::class,
+        'blog-categories' => App\Http\Controllers\Admin\BlogCategoryController::class,
+    ]);
+});

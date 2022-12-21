@@ -11,7 +11,31 @@
         <div class="pcoded-inner-content">
             <div class="main-body">
                 <div class="page-wrapper">
+                    <!-- Page-header start -->
+                    <div class="page-header">
+                        <div class="row align-items-end">
+                            <div class="col-lg-8">
+                                <div class="page-header-title">
+                                    <div class="d-inline">
+                                        <h4>Topics Management</h4>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="col-lg-4">
+                                <div class="page-header-breadcrumb">
+                                    <ul class="breadcrumb-title">
+                                        <li class="breadcrumb-item">
+                                            <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="#!">Topic</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Page-header end -->
                     <!-- Page-body start -->
                     <div class="page-body">
                         <!-- Row start -->
@@ -20,63 +44,33 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-header-text">All Topics</h5>
+                                        <button class="btn btn-primary" id="addH1" onclick="addH1();">
+                                            <i class="icofont icofont-plus"></i> Add Heading 1
+                                        </button>
+
                                     </div>
+                                    {{-- <button class="btn btn-inverse btn-outline-inverse btn-icon"><i class="icofont icofont-ui-rating"></i></button> --}}
                                     <div class="card-block accordion-block">
                                         <div id="accordion" role="tablist" aria-multiselectable="true">
                                             <div class="accordion-panel">
                                                 <div class="accordion-heading" role="tab" id="headingOne">
                                                     <div class="card-title accordion-title row">
                                                         <a class="accordion-msg col-sm-10" data-toggle="collapse"
-                                                            data-parent="#accordion" href="#collapseOne"
-                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            data-parent="#accordion" href="#collapse-1-0-0"
+                                                            aria-expanded="true" aria-controls="collapse-1-0-0">
                                                             Heading 1
                                                         </a>
-                                                        <div class="com-sm-2" style="border-top: solid; display:flex">
-                                                            <h2>asd</h2>
+                                                        <div class="com-sm-2" style="border-top: 1px solid #ddd; padding-top: 4px;">
+                                                            <div class="icon-btn">
+                                                                <button class="btn btn-primary btn-outline-primary btn-icon" onclick="addH2();"><i class="icofont icofont-plus"></i></button>
+                                                                <button class="btn btn-danger btn-outline-danger btn-icon"><i class="icofont icofont-minus"></i></button>
+                                                                <button class="btn btn-inverse btn-outline-inverse btn-icon"><i class="icofont icofont-ui-rate-blank"></i></button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                                <div id="collapse-1-0-0" class="panel-collapse collapse in" role="tabpanel"
                                                     aria-labelledby="headingOne">
-                                                    <div class="accordion-content accordion-desc">
-                                                        <div class="col-sm-12">
-                                                            <textarea rows="5" cols="5" class="form-control" placeholder="write from here.."></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-panel">
-                                                <div class="accordion-heading" role="tab" id="headingTwo">
-                                                    <h3 class="card-title accordion-title">
-                                                        <a class="accordion-msg" data-toggle="collapse"
-                                                            data-parent="#accordion" href="#collapseTwo"
-                                                            aria-expanded="false" aria-controls="collapseTwo">
-                                                            Heading 2
-                                                        </a>
-                                                    </h3>
-                                                </div>
-                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                                                    aria-labelledby="headingTwo">
-                                                    <div class="accordion-content accordion-desc">
-                                                        <div class="col-sm-12">
-                                                            <textarea rows="5" cols="5" class="form-control" placeholder="write from here.."></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-panel">
-                                                <div class=" accordion-heading" role="tab" id="headingThree">
-                                                    <h3 class="card-title accordion-title">
-                                                        <a class="accordion-msg" data-toggle="collapse"
-                                                            data-parent="#accordion" href="#collapseThree"
-                                                            aria-expanded="false" aria-controls="collapseThree">
-                                                            Heading 3
-                                                        </a>
-                                                    </h3>
-                                                </div>
-                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-                                                    aria-labelledby="headingThree">
                                                     <div class="accordion-content accordion-desc">
                                                         <div class="col-sm-12">
                                                             <textarea rows="5" cols="5" class="form-control" placeholder="write from here.."></textarea>
@@ -106,4 +100,38 @@
 @section('custom-script')
     <!-- Accordion js -->
     <script type="text/javascript" src="{{ asset('assets') }}/pages/accordion/accordion.js"></script>
+
+    <script>
+        var counterH1 = 1;
+        $("#addH1").click(function() {
+            counterH1++;
+            var h1Section = `<div class="accordion-panel">
+                                                <div class="accordion-heading" role="tab" id="headingOne">
+                                                    <div class="card-title accordion-title row">
+                                                        <a class="accordion-msg col-sm-10" data-toggle="collapse"
+                                                            data-parent="#accordion" href="#collapse-${counterH1}-0-0"
+                                                            aria-expanded="true" aria-controls="collapse-${counterH1}-0-0">
+                                                            Heading 1
+                                                        </a>
+                                                        <div class="com-sm-2" style="border-top: 1px solid #ddd; padding-top: 4px;">
+                                                            <div class="icon-btn">
+                                                                <button class="btn btn-primary btn-outline-primary btn-icon"><i class="icofont icofont-plus"></i></button>
+                                                                <button class="btn btn-danger btn-outline-danger btn-icon"><i class="icofont icofont-minus"></i></button>
+                                                                <button class="btn btn-inverse btn-outline-inverse btn-icon"><i class="icofont icofont-ui-rate-blank"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="collapse-${counterH1}-0-0" class="panel-collapse collapse in" role="tabpanel"
+                                                    aria-labelledby="headingOne">
+                                                    <div class="accordion-content accordion-desc">
+                                                        <div class="col-sm-12">
+                                                            <textarea rows="5" cols="5" class="form-control" placeholder="write from here.."></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>`;
+            $("#accordion").append(h1Section);
+        });
+    </script>
 @endsection
