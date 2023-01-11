@@ -23,7 +23,7 @@
                                 <div class="page-header-title">
                                     <div class="d-inline">
                                         <h4>Tutorials</h4>
-                                        <span>All Tutorials are listed here.</span>
+                                        {{-- <span>All Tutorials are listed here.</span> --}}
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +38,10 @@
                                     </ul>
                                 </div>
                             </div>
+
                         </div>
+                        <br>
+                        <a type="button" href="{{route('admin.blogs.create')}}" class="btn btn-primary m-b-0">+ Create New</a>
                     </div>
                     <!-- Page-header end -->
 
@@ -59,7 +62,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Title</th>
-                                                        <th>Summary</th>
                                                         <th>Category</th>
                                                         <th>Created At</th>
                                                     </tr>
@@ -70,14 +72,12 @@
                                                         <td>{{$blog->title}}</td>
                                                         <td>{{$blog->created_at}}</td>
                                                         <td>{{$blog->created_at}}</td>
-                                                        <td>{{$blog->created_at}}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
                                                         <th>Title</th>
-                                                        <th>Summary</th>
                                                         <th>Category</th>
                                                         <th>Created At</th>
                                                     </tr>

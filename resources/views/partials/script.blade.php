@@ -17,10 +17,23 @@
 <script src="{{ asset('assets') }}/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="{{ asset('assets') }}/js/SmoothScroll.js"></script>
 <script src="{{ asset('assets') }}/js/pcoded.min.js"></script>
+
+<!-- Validation js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets') }}/pages/form-validation/validate.js"></script>
 <!-- custom js -->
+<!-- Custom js -->
+<script type="text/javascript" src="{{ asset('assets') }}/pages/form-validation/form-validation.js"></script>
 <script src="{{ asset('assets') }}/js/vartical-layout.min.js"></script>
 <script type="text/javascript" src="{{ asset('assets') }}/pages/dashboard/custom-dashboard.js"></script>
 <script type="text/javascript" src="{{ asset('assets') }}/js/script.min.js"></script>
+
+
+<script src="{{ asset('assets') }}/js/pcoded.min.js"></script>
+    <script src="{{ asset('assets') }}/js/vartical-layout.min.js"></script>
+    <script src="{{ asset('assets') }}/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets') }}/js/script.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 {{-- <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>

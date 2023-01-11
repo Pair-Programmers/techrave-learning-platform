@@ -6,6 +6,7 @@ use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -16,7 +17,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('id', 'desc')->get();
         return view('pages.blogs.index', compact('blogs'));
     }
 
@@ -38,7 +39,27 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        //
+        $inputs = $request->input();
+        $inputs['slug'] = Str::slug($request->title);
+        // $inputs['admin_id'] = Auth::guard('admin')->id();
+        $inputs['blog_category_id'] = 1;
+        // $inputs['author_name'] =  Auth::guard('admin')->user()->name;
+        if ($request->hasFile('thumbnail')) {
+            $image = $request->file('thumbnail');
+            $name = str_replace(' ', '-', $image->getClientOriginalName());
+            $image->move(public_path().'/storage/images/blogs/thumbnail', $name);
+            $inputs['thumbnail'] = $name;
+        }
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = str_replace(' ', '-', $image->getClientOriginalName());
+            $image->move(public_path().'/storage/images/blogs', $name);
+            $inputs['image'] = $name;
+        }
+        Blog::create($inputs);
+        return redirect()->route('admin.blogs.index')->with('success', 'Created Successfuly !');
+
     }
 
     /**
