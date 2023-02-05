@@ -4,10 +4,12 @@
 @endsection
 
 @section('custom-css')
-<!-- Data Table Css -->
-<link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/pages/data-table/css/buttons.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+    <!-- Data Table Css -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets') }}/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/pages/data-table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets') }}/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
 @endsection
 
 @section('page-content')
@@ -31,9 +33,9 @@
                                 <div class="page-header-breadcrumb">
                                     <ul class="breadcrumb-title">
                                         <li class="breadcrumb-item">
-                                            <a href="{{url('/')}}"> <i class="feather icon-home"></i> </a>
+                                            <a href="{{ url('/') }}"> <i class="feather icon-home"></i> </a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="{{route('admin.blogs.index')}}">Tutorials</a>
+                                        <li class="breadcrumb-item"><a href="{{ route('admin.blogs.index') }}">Tutorials</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -41,7 +43,8 @@
 
                         </div>
                         <br>
-                        <a type="button" href="{{route('admin.blogs.create')}}" class="btn btn-primary m-b-0">+ Create New</a>
+                        <a type="button" href="{{ route('admin.blogs.create') }}" class="btn btn-primary m-b-0">+ Create
+                            New</a>
                     </div>
                     <!-- Page-header end -->
 
@@ -68,11 +71,11 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($blogs as $blog)
-                                                    <tr>
-                                                        <td>{{$blog->title}}</td>
-                                                        <td>{{$blog->created_at}}</td>
-                                                        <td>{{$blog->created_at}}</td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>{{ $blog->title }}</td>
+                                                            <td>{{ $blog->created_at }}</td>
+                                                            <td>{{ $blog->created_at }}</td>
+                                                        </tr>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
@@ -103,26 +106,54 @@
 @endsection
 
 @section('custom-script')
-<!-- data-table js -->
-<script src="{{ asset('assets') }}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="{{ asset('assets') }}/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="{{ asset('assets') }}/pages/data-table/js/jszip.min.js"></script>
-<script src="{{ asset('assets') }}/pages/data-table/js/pdfmake.min.js"></script>
-<script src="{{ asset('assets') }}/pages/data-table/js/vfs_fonts.js"></script>
-<script src="{{ asset('assets') }}/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="{{ asset('assets') }}/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="{{ asset('assets') }}/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ asset('assets') }}/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="{{ asset('assets') }}/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-<script src="{{ asset('assets') }}/pages/data-table/extensions/fixed-colums/js/dataTables.fixedColumns.min.js"></script>
+    <!-- data-table js -->
+    <script src="{{ asset('assets') }}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('assets') }}/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ asset('assets') }}/pages/data-table/js/jszip.min.js"></script>
+    <script src="{{ asset('assets') }}/pages/data-table/js/pdfmake.min.js"></script>
+    <script src="{{ asset('assets') }}/pages/data-table/js/vfs_fonts.js"></script>
+    <script src="{{ asset('assets') }}/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ asset('assets') }}/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ asset('assets') }}/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets') }}/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js">
+    </script>
+    <script src="{{ asset('assets') }}/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js">
+    </script>
+    <script src="{{ asset('assets') }}/pages/data-table/extensions/fixed-colums/js/dataTables.fixedColumns.min.js">
+    </script>
 
-<!-- i18next.min.js -->
-<script type="text/javascript" src="{{ asset('assets') }}/bower_components/i18next/js/i18next.min.js"></script>
-<script type="text/javascript" src="{{ asset('assets') }}/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
-<script type="text/javascript" src="{{ asset('assets') }}/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
-<script type="text/javascript" src="{{ asset('assets') }}/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
-<!-- Custom js -->
-<script src="{{ asset('assets') }}/pages/data-table/js/data-table-custom.js"></script>
+    <!-- i18next.min.js -->
+    <script type="text/javascript" src="{{ asset('assets') }}/bower_components/i18next/js/i18next.min.js"></script>
+    <script type="text/javascript"
+        src="{{ asset('assets') }}/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript"
+        src="{{ asset('assets') }}/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js">
+    </script>
+    <script type="text/javascript" src="{{ asset('assets') }}/bower_components/jquery-i18next/js/jquery-i18next.min.js">
+    </script>
+    <!-- Custom js -->
+    <script src="{{ asset('assets') }}/pages/data-table/js/data-table-custom.js"></script>
 
+    <script>
+        const data = {
+            "api_token": "K5et@Nyq-ZkOupUXqiyh",
+            "msisdn": "+923239991999",
+            "app_name": "Live Server"
+        };
 
+        fetch('https://sms-api.vipoffers4.me/api/otp/send', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    </script>
 @endsection
