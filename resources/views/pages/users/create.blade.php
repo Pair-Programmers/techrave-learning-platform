@@ -19,7 +19,7 @@
                             <div class="col-lg-8">
                                 <div class="page-header-title">
                                     <div class="d-inline">
-                                        <h4>Edit Tutorials</h4>
+                                        <h4>Create Tutorials</h4>
                                         {{-- <span>Create Tutorials from here.</span> --}}
                                     </div>
                                 </div>
@@ -32,7 +32,7 @@
                                         </li>
                                         <li class="breadcrumb-item"><a href="{{route('admin.blogs.index')}}">Tutorials</a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="#">Edit</a>
+                                        <li class="breadcrumb-item"><a href="{{route('admin.blogs.create')}}">Create</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -53,36 +53,21 @@
 
                                     </div> --}}
                                     <div class="card-block">
-                                        <form method="POST" action="{{route('admin.blogs.update', $blog)}}" enctype="multipart/form-data">
-                                            @method('PUT')
+                                        <form method="POST" action="{{route('admin.blogs.store')}}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Title</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="title" id="title"
-                                                        placeholder="" value="{{$blog->title}}">
+                                                        placeholder="">
                                                     <span class="messages"></span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Select Category</label>
-                                                <div class="col-sm-10">
-                                                    <select name="blog_category_id" class="form-control">
-                                                        @foreach ($blogCategories as $category)
-                                                        @if ($category->id == $blog->blog_category_id)
-                                                        <option value="{{$category->id}}" selected>{{$category->name}}</option>
-                                                        @else
-                                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                                        @endif
-                                                        @endforeach
-                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Summary</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="summary" id="summary"
-                                                        placeholder="Optional" value="{{$blog->summary}}">
+                                                        placeholder="Optional">
                                                     <span class="messages"></span>
                                                 </div>
                                             </div>
@@ -90,7 +75,6 @@
                                                 <label class="col-sm-2 col-form-label">Description</label>
                                                 <div class="col-sm-10">
                                                    <textarea name="description" id="description" >
-                                                    {{$blog->description}}
                                                    </textarea>
                                                 </div>
                                             </div>
@@ -100,19 +84,13 @@
                                                 <div class="col-sm-10">
                                                     <div class="form-check form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="radio" name="is_active"
-                                                            @if ($blog->is_active == true)
-                                                            checked
-                                                            @endif
+                                                            <input class="form-check-input" type="radio" name="is_active" checked
                                                                 id="is_active-1" value="1"> Public
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <label class="form-check-label">
                                                             <input class="form-check-input" type="radio" name="is_active"
-                                                            @if ($blog->is_active == false)
-                                                            checked
-                                                            @endif
                                                                 id="is_active-2" value="0"> Private
                                                         </label>
                                                     </div>

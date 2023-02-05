@@ -6,6 +6,7 @@ use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Http\Controllers\Controller;
+use App\Models\BlogCategory;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
@@ -28,7 +29,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('pages.blogs.create');
+        $blogCategories = BlogCategory::all();
+        return view('pages.blogs.create', compact('blogCategories'));
     }
 
     /**
@@ -81,7 +83,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        $blogCategories = BlogCategory::all();
+        return view('pages.blogs.edit', compact('blog', 'blogCategories'));
     }
 
     /**
@@ -93,7 +96,40 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+        $id = $blog->id;
+        $this->validate($request, [
+            'title' => 'required|string|unique:blogs,title,'.$id,
+        ]);
+
+        $inputs = $request->except(['_token', '_method']);
+        $inputs['slug'] = Str::slug($request->title);
+
+        if ($request->hasFile('thumbnail')) {
+            $image = $request->file('thumbnail');
+            $name=time().'_'.$image->getClientOriginalName();
+            $image->move(public_path().'/storage/images/blogs/thumbnail', $name);
+            $inputs['thumbnail'] = $name;
+        }
+        else{
+            unset($inputs['thumbnail']);
+        }
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name=time().'_'.$image->getClientOriginalName();
+            $image->move(public_path().'/storage/images/blogs', $name);
+            $inputs['image'] = $name;
+        }
+        else{
+            unset($inputs['image']);
+        }
+        if(Blog::find($id)){
+            Blog::where('id', $id)->update($inputs);
+        }
+        else{
+            return redirect()->back()->with('error', 'Blog not found !');
+        }
+        return redirect()->back()->with('success', 'Updated Successfuly !');
     }
 
     /**

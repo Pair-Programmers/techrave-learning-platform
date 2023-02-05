@@ -28,7 +28,7 @@
                                 <div class="page-header-breadcrumb">
                                     <ul class="breadcrumb-title">
                                         <li class="breadcrumb-item">
-                                            <a href="{{url('/')}}"> <i class="feather icon-home"></i> </a>
+                                            <a href="{{route('home')}}"> <i class="feather icon-home"></i> </a>
                                         </li>
                                         <li class="breadcrumb-item"><a href="{{route('admin.blogs.index')}}">Tutorials</a>
                                         </li>
@@ -64,6 +64,16 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Select Category</label>
+                                                <div class="col-sm-10">
+                                                    <select name="blog_category_id" class="form-control">
+                                                        @foreach ($blogCategories as $category)
+                                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Summary</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="summary" id="summary"
@@ -71,6 +81,7 @@
                                                     <span class="messages"></span>
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Description</label>
                                                 <div class="col-sm-10">
@@ -126,7 +137,7 @@
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-    {{-- <script type="text/javascript" src="{{ asset('assets') }}/pages/form-validation/validate.js"></script> --}}
+    <script type="text/javascript" src="{{ asset('assets') }}/pages/form-validation/validate.js"></script>
 
     <script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
     <!-- i18next.min.js -->

@@ -20,10 +20,25 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('public/images/users');
         Storage::makeDirectory('public/images/blogs');
 
-        \App\Models\User::factory(10)->create();
-        $this->call([
-            BlogCategorySeeder::class,
-            BlogSeeder::class
+        BlogCategory::create([
+            'name'=>'General',
+            'slug'=>'general',
         ]);
+
+        BlogCategory::create([
+            'name'=>'Web Development',
+            'slug'=>'web-development',
+        ]);
+
+        BlogCategory::create([
+            'name'=>'IT',
+            'slug'=>'it',
+        ]);
+
+        // \App\Models\User::factory(10)->create();
+        // $this->call([
+        //     BlogCategorySeeder::class,
+        //     BlogSeeder::class
+        // ]);
     }
 }

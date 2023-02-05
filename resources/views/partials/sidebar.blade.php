@@ -3,7 +3,7 @@
         <div class="pcoded-navigatio-lavel">Navigation</div>
         <ul class="pcoded-item pcoded-left-item">
             <li>
-                <a href="/">
+                <a href="{{ route('home') }}">
                     <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                     <span class="pcoded-mtext">Dashboard</span>
                 </a>
@@ -12,6 +12,12 @@
                 <a href="{{ route('admin.blogs.index') }}">
                     <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                     <span class="pcoded-mtext">Tutorials</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="{{ route('admin.users.index') }}">
+                    <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
+                    <span class="pcoded-mtext">Manage Users</span>
                 </a>
             </li>
         </ul>

@@ -33,9 +33,9 @@
                                 <div class="page-header-breadcrumb">
                                     <ul class="breadcrumb-title">
                                         <li class="breadcrumb-item">
-                                            <a href="{{ url('/') }}"> <i class="feather icon-home"></i> </a>
+                                            <a href="{{ route('home') }}"> <i class="feather icon-home"></i> </a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="{{ route('admin.blogs.index') }}">Tutorials</a>
+                                        <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Tutorials</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -43,7 +43,7 @@
 
                         </div>
                         <br>
-                        <a type="button" href="{{ route('admin.blogs.create') }}" class="btn btn-primary m-b-0">+ Create
+                        <a type="button" href="{{ route('admin.users.create') }}" class="btn btn-primary m-b-0">+ Create
                             New</a>
                     </div>
                     <!-- Page-header end -->
@@ -64,29 +64,35 @@
                                             <table id="simpletable" class="table table-striped table-bordered nowrap">
                                                 <thead>
                                                     <tr>
-                                                        <th>Title</th>
-                                                        <th>Category</th>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
                                                         <th>Created At</th>
                                                         <th>Action</th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($blogs as $blog)
+                                                    @foreach ($users as $user)
                                                         <tr>
-                                                            <td>{{ $blog->title }}</td>
-                                                            <td>{{ $blog->category->name }}</td>
-                                                            <td>{{ $blog->created_at }}</td>
+                                                            <td>{{ $user->id }}</td>
+                                                            <td>{{ $user->name }}</td>
+                                                            <td>{{ $user->email }}</td>
+                                                            <td>{{ $user->created_at }}</td>
                                                             <td>
-                                                                <a href="{{route('admin.blogs.edit', $blog)}}" class="btn btn-primary btn-mini">Edit</a>
-                                                                <button type="button" class="btn btn-danger btn-mini waves-effect waves-light">Delete</button>
+                                                                <a href="{{ route('admin.blogs.edit', $user) }}"
+                                                                    class="btn btn-primary btn-mini">Edit</a>
+                                                                <button type="button"
+                                                                    class="btn btn-danger btn-mini waves-effect waves-light">Delete</button>
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Title</th>
-                                                        <th>Category</th>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
                                                         <th>Created At</th>
                                                         <th>Action</th>
                                                     </tr>
