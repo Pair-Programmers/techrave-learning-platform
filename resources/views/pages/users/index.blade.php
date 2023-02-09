@@ -67,6 +67,8 @@
                                                         <th>ID</th>
                                                         <th>Name</th>
                                                         <th>Email</th>
+                                                        <th>Role</th>
+                                                        <th>Status</th>
                                                         <th>Created At</th>
                                                         <th>Action</th>
 
@@ -78,9 +80,11 @@
                                                             <td>{{ $user->id }}</td>
                                                             <td>{{ $user->name }}</td>
                                                             <td>{{ $user->email }}</td>
+                                                            <td>{{ $user->role }}</td>
+                                                            <td>{{ $user->is_active ? 'Active' : 'InActive' }}</td>
                                                             <td>{{ $user->created_at }}</td>
                                                             <td>
-                                                                <a href="{{ route('admin.blogs.edit', $user) }}"
+                                                                <a href="{{ route('admin.users.edit', $user) }}"
                                                                     class="btn btn-primary btn-mini">Edit</a>
                                                                 <button type="button"
                                                                     class="btn btn-danger btn-mini waves-effect waves-light">Delete</button>
@@ -93,6 +97,8 @@
                                                         <th>ID</th>
                                                         <th>Name</th>
                                                         <th>Email</th>
+                                                        <th>Role</th>
+                                                        <th>Status</th>
                                                         <th>Created At</th>
                                                         <th>Action</th>
                                                     </tr>

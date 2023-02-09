@@ -19,7 +19,7 @@
                             <div class="col-lg-8">
                                 <div class="page-header-title">
                                     <div class="d-inline">
-                                        <h4>Create Tutorials</h4>
+                                        <h4>Edit User</h4>
                                         {{-- <span>Create Tutorials from here.</span> --}}
                                     </div>
                                 </div>
@@ -30,9 +30,9 @@
                                         <li class="breadcrumb-item">
                                             <a href="{{route('home')}}"> <i class="feather icon-home"></i> </a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="{{route('admin.blogs.index')}}">Tutorials</a>
+                                        <li class="breadcrumb-item"><a href="{{route('admin.users.index')}}">Users</a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="{{route('admin.blogs.create')}}">Create</a>
+                                        <li class="breadcrumb-item"><a href="{{route('admin.users.edit', $user)}}">Edit</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -53,47 +53,68 @@
 
                                     </div> --}}
                                     <div class="card-block">
-                                        <form method="POST" action="{{route('admin.blogs.update', $blog)}}" enctype="multipart/form-data">
-                                            @method('PUT')
+                                        <form method="POST" action="{{route('admin.users.update', $user)}}" enctype="multipart/form-data">
                                             @csrf
+                                            @method('PUT')
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Title</label>
+                                                <label class="col-sm-2 col-form-label">Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="title" id="title"
-                                                        placeholder="" value="{{$blog->title}}">
+                                                    <input type="text" class="form-control" name="name" id="title"
+                                                        placeholder="" value="{{$user->name}}">
                                                     <span class="messages"></span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Summary</label>
+                                                <label class="col-sm-2 col-form-label">Select Role</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="summary" id="summary"
-                                                        placeholder="Optional" value="{{$blog->summary}}">
-                                                    <span class="messages"></span>
+                                                    <select name="role" class="form-control">
+                                                        @if ($user->role == 'Admin')
+                                                        <option value="Admin" selected>Admin</option>
+                                                        <option value="Coordinator">Coordinator</option>
+                                                        @else
+                                                        <option value="Admin">Admin</option>
+                                                        <option value="Coordinator" selected>Coordinator</option>
+                                                        @endif
+
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Description</label>
+                                                <label class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-10">
-                                                   <textarea name="description" id="description" >
-                                                    {{$blog->description}}
-                                                   </textarea>
+                                                    <input type="text" class="form-control" name="email" id="summary"
+                                                    value="{{$user->email}}">
+                                                    <span class="messages"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="password" id="summary"
+                                                        >
+                                                    <span class="messages"></span>
                                                 </div>
                                             </div>
 
                                             <div class="row">
-                                                <label class="col-sm-2 col-form-label">Availability</label>
+                                                <label class="col-sm-2 col-form-label">Status</label>
                                                 <div class="col-sm-10">
                                                     <div class="form-check form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="radio" name="is_active" checked
-                                                                id="is_active-1" value="1"> Public
+                                                            <input class="form-check-input" type="radio" name="is_active"
+                                                            @if ($user->is_active == true)
+                                                                checked
+                                                            @endif
+                                                                id="is_active-1" value="1"> Active
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <label class="form-check-label">
                                                             <input class="form-check-input" type="radio" name="is_active"
-                                                                id="is_active-2" value="0"> Private
+                                                                id="is_active-2" value="0" @if ($user->is_active == false)
+                                                                checked
+                                                            @endif> InActive
                                                         </label>
                                                     </div>
                                                     <span class="messages"></span>
@@ -128,7 +149,7 @@
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-    {{-- <script type="text/javascript" src="{{ asset('assets') }}/pages/form-validation/validate.js"></script> --}}
+    <script type="text/javascript" src="{{ asset('assets') }}/pages/form-validation/validate.js"></script>
 
     <script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
     <!-- i18next.min.js -->
