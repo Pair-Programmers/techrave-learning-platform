@@ -69,9 +69,15 @@
                                                 <div class="col-sm-10">
                                                     <select name="role" class="form-control">
                                                         @if ($user->role == 'Admin')
+                                                        <option value="Guest">Guest</option>
                                                         <option value="Admin" selected>Admin</option>
                                                         <option value="Coordinator">Coordinator</option>
+                                                        @elseif ($user->role == 'Guest')
+                                                        <option value="Guest" selected>Guest</option>
+                                                        <option value="Admin">Admin</option>
+                                                        <option value="Coordinator">Coordinator</option>
                                                         @else
+                                                        <option value="Guest">Guest</option>
                                                         <option value="Admin">Admin</option>
                                                         <option value="Coordinator" selected>Coordinator</option>
                                                         @endif

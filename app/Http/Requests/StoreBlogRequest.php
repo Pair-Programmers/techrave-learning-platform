@@ -24,7 +24,7 @@ class StoreBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'role'=>'Admin|Contributor'
         ];
     }
 }

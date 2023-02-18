@@ -14,12 +14,14 @@
                     <span class="pcoded-mtext">Tutorials</span>
                 </a>
             </li>
+            @if (Auth::user()->role == 'Admin')
             <li class="">
                 <a href="{{ route('admin.users.index') }}">
                     <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                     <span class="pcoded-mtext">Manage Users</span>
                 </a>
             </li>
+            @endif
         </ul>
     </div>
 </nav>

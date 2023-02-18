@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
@@ -44,7 +45,6 @@ class BlogController extends Controller
         $inputs = $request->input();
         $inputs['slug'] = Str::slug($request->title);
         // $inputs['admin_id'] = Auth::guard('admin')->id();
-        $inputs['blog_category_id'] = 1;
         // $inputs['author_name'] =  Auth::guard('admin')->user()->name;
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');

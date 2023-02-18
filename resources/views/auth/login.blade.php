@@ -23,20 +23,22 @@
                                         <h3 class="text-center txt-primary">Sign In</h3>
                                     </div>
                                 </div>
-                                <div class="row m-b-20">
+                                {{-- <div class="row m-b-20">
                                     <div class="col-md-6">
                                         <button class="btn btn-facebook m-b-20 btn-block"><i class="icofont icofont-social-facebook"></i>facebook</button>
                                     </div>
                                     <div class="col-md-6">
                                         <button class="btn btn-twitter m-b-20 btn-block"><i class="icofont icofont-social-twitter"></i>twitter</button>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <p class="text-muted text-center p-b-5">Sign in with your regular account</p>
                                 @error('email')
                                     <p style="color: red">{{ $message }}</p>
+                                    <p style="color: red">Or your acount is Inactive</p>
                                 @enderror
                                 @error('password')
                                     <p style="color: red">{{ $message }}</p>
+                                    <p style="color: red">Or your acount is Inactive</p>
                                 @enderror
                                 <div class="form-group form-primary">
                                     <input type="text" name="email" class="form-control" required="" placeholder="Username">
@@ -62,7 +64,7 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
 
                                     </div>
                                 </div>

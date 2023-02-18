@@ -100,7 +100,7 @@
                         <div class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('assets') }}/images/avatar-4.jpg" class="img-radius"
                                 alt="User-Profile-Image">
-                            <span>John Doe</span>
+                            <span>{{Auth::user()->name}}</span>
                             <i class="feather icon-chevron-down"></i>
                         </div>
                         <ul class="show-notification profile-notification dropdown-menu"

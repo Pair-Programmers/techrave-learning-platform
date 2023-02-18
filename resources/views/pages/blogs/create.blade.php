@@ -65,16 +65,32 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Select Category</label>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-4">
                                                     <select name="blog_category_id" class="form-control">
                                                         @foreach ($blogCategories as $category)
                                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                <label class="col-sm-2 col-form-label">Author</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" name="author_name" id="summary"
+                                                        value="{{Auth::user()->name}}">
+                                                    <span class="messages"></span>
+                                                </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Summary</label>
+                                                <label class="col-sm-2 col-form-label">Thumbnail</label>
+                                                <div class="col-sm-4">
+                                                    <input type="file" name="thumbnail">
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Image</label>
+                                                <div class="col-sm-4">
+                                                    <input type="file" name="image">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Short Summary</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="summary" id="summary"
                                                         placeholder="Optional">

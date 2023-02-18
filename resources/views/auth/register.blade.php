@@ -101,7 +101,7 @@
                                         <h3 class="text-center txt-primary">Sign up</h3>
                                     </div>
                                 </div>
-                                <div class="row m-b-20">
+                                {{-- <div class="row m-b-20">
                                     <div class="col-md-6">
                                         <a href="#!"
                                             class="btn btn-facebook m-b-20 btn-block waves-effect waves-light"><i
@@ -112,7 +112,7 @@
                                             class="btn btn-twitter m-b-0 btn-block waves-effect waves-light"><i
                                                 class="icofont icofont-social-twitter"></i>twitter</a>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <p class="text-muted text-center p-b-5">Sign up with your regular account</p>
                                 @error('name')
                                     <p style="color: red">{{ $message }}</p>

@@ -77,6 +77,7 @@
                                                             <td>{{ $blog->category->name }}</td>
                                                             <td>{{ $blog->created_at }}</td>
                                                             <td>
+                                                                <a href="{{route('admin.blogs.show', $blog)}}" class="btn btn-primary btn-mini">View</a>
                                                                 <a href="{{route('admin.blogs.edit', $blog)}}" class="btn btn-primary btn-mini">Edit</a>
                                                                 <button type="button" class="btn btn-danger btn-mini waves-effect waves-light">Delete</button>
                                                             </td>

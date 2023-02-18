@@ -67,6 +67,7 @@
                                                 <label class="col-sm-2 col-form-label">Select Role</label>
                                                 <div class="col-sm-10">
                                                     <select name="role" class="form-control">
+                                                        <option selected value="Guest">Guest</option>
                                                         <option value="Admin">Admin</option>
                                                         <option value="Coordinator" selected>Coordinator</option>
                                                     </select>

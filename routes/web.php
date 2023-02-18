@@ -24,14 +24,28 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.dashboard');
     })->name('dashboard');
-    
-    Route::resources([
-        'blogs' => App\Http\Controllers\Admin\BlogController::class,
-        'blog-categories' => App\Http\Controllers\Admin\BlogCategoryController::class,
-    ]);
+
+    // Route::middleware('contributor')->group(function () {
+        Route::resources([
+            'blog-categories' => App\Http\Controllers\Admin\BlogCategoryController::class,
+        ]);
+    // });
+
+    //blog
+    Route::controller(App\Http\Controllers\Admin\BlogController::class)->middleware('contributor')->prefix('blogs')->name('blogs.')->group(function () {
+        Route::post('/', 'store')->name('store');
+        Route::get('/create', 'create')->name('create');
+        Route::put('/{blog}', 'update')->name('update');
+        Route::delete('/{blog}', 'destroy')->name('destroy');
+        Route::get('/{blog}/edit', 'edit')->name('edit');
+        Route::withoutMiddleware('contributor')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/{blog}', 'show')->name('show');
+        });
+    });
 
     // users
-    Route::controller(App\Http\Controllers\Admin\UserController::class)->prefix('users')->name('users.')->group(function () {
+    Route::controller(App\Http\Controllers\Admin\UserController::class)->middleware('admin')->prefix('users')->name('users.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
