@@ -105,7 +105,12 @@
                                                    </textarea>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Other Files</label>
+                                                <div class="col-sm-10">
+                                                  <input type="file" multiple name="files[]">
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <label class="col-sm-2 col-form-label">Availability</label>
                                                 <div class="col-sm-10">

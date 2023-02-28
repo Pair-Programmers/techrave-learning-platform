@@ -49,19 +49,29 @@ class BlogController extends Controller
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');
             $name = str_replace(' ', '-', $image->getClientOriginalName());
-            $image->move(public_path().'/storage/images/blogs/thumbnail', $name);
+            $image->move(public_path() . '/storage/images/blogs/thumbnail', $name);
             $inputs['thumbnail'] = $name;
         }
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = str_replace(' ', '-', $image->getClientOriginalName());
-            $image->move(public_path().'/storage/images/blogs', $name);
+            $image->move(public_path() . '/storage/images/blogs', $name);
             $inputs['image'] = $name;
         }
+
+        $fileNames = array();
+        if ($request->hasFile('files')) {
+            $files = $request->file('files');
+
+            foreach ($files as $file) {
+                $path = $file->store('user/files');
+                array_push($fileNames, $path);
+            }
+        }
+        $inputs['files'] = json_encode($fileNames);
         Blog::create($inputs);
         return redirect()->route('admin.blogs.index')->with('success', 'Created Successfuly !');
-
     }
 
     /**
@@ -98,7 +108,7 @@ class BlogController extends Controller
     {
         $id = $blog->id;
         $this->validate($request, [
-            'title' => 'required|string|unique:blogs,title,'.$id,
+            'title' => 'required|string|unique:blogs,title,' . $id,
         ]);
 
         $inputs = $request->except(['_token', '_method']);
@@ -106,27 +116,40 @@ class BlogController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             $image = $request->file('thumbnail');
-            $name=time().'_'.$image->getClientOriginalName();
-            $image->move(public_path().'/storage/images/blogs/thumbnail', $name);
+            $name = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path() . '/storage/images/blogs/thumbnail', $name);
             $inputs['thumbnail'] = $name;
-        }
-        else{
+        } else {
             unset($inputs['thumbnail']);
         }
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name=time().'_'.$image->getClientOriginalName();
-            $image->move(public_path().'/storage/images/blogs', $name);
+            $name = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path() . '/storage/images/blogs', $name);
             $inputs['image'] = $name;
-        }
-        else{
+        } else {
             unset($inputs['image']);
         }
-        if(Blog::find($id)){
+
+
+
+        if (Blog::find($id)) {
+            if ($request->hasFile('files')) {
+                $fileNames = array();
+                $files = $request->file('files');
+
+                foreach ($files as $file) {
+                    $path = $file->store('user/files');
+                    array_push($fileNames, $path);
+                }
+                $inputs['files'] = json_encode($fileNames);
+            } else {
+                unset($inputs['files']);
+            }
+            
             Blog::where('id', $id)->update($inputs);
-        }
-        else{
+        } else {
             return redirect()->back()->with('error', 'Blog not found !');
         }
         return redirect()->back()->with('success', 'Updated Successfuly !');

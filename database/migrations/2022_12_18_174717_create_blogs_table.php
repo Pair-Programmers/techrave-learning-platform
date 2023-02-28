@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->string('thumbnail')->nullable();
+            $table->json('files')->nullable();
             $table->longText('meta_tag_title')->nullable();
             $table->longText('meta_tag_keywords')->nullable();
             $table->longText('meta_tag_description')->nullable();
